@@ -1,9 +1,11 @@
 fn main() {
+    let plus_one = |x: i32| x + 1;
     println!("Hello, world!");
-    print_number(30);
+    let answer = do_something(|x| x + 2, 5);
+    println!("{}",answer );
 }
 
-fn print_number(x: i32)
-{
-    println!("x is: {}", x );
+fn do_something<F>(some_closure: F, val: i32) -> i32
+where F: Fn(i32) -> i32 {
+    some_closure(val)
 }
